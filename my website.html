@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+  <style>
+    /* CSS styles go here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      background-color: #ffcc00;
+      margin: 0;
+      animation: fade-in 1s ease-in;
+    }
+    p {
+      color: #666;
+      text-align: center;
+      font-size: 18px;
+    }
+    p{
+      color: blue ;
+      font-size: large;
+    }
+    .line {
+      position: relative;
+      height: 2px;
+      background-color: #333;
+      width: 0;
+      animation: expand-line 1s forwards;
+    }
+
+    @keyframes expand-line {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Website</h1>
+  <p>This is a demo website.</p>
+  <div class="line"></div>
+
+  <script>
+    // JavaScript code goes here
+    window.addEventListener('DOMContentLoaded', (event) => {
+      // Perform actions after the page has loaded
+      console.log('Website loaded.');
+    });
+  </script>
+</body>
+</html>
