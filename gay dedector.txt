@@ -1,0 +1,30 @@
+import java . util . Scanner;
+public class leetcoode {
+
+  
+public static void main(String[] args) {
+  
+ Scanner scn = new Scanner( System.in);
+  String[] options = {"you are a gay" ,"probably you are a gay " , " how many time should i need to tell you are a gay" , " absolutely you are gay -->6" , " maybe your a gay" , " no your not  a gay"};
+   
+  int randomIndex = (int) (Math.random() * options.length);
+  String generatedString = options[randomIndex];
+   System.out.println(" enter your name please");
+   String st = scn.nextLine();
+      if (st == "rishu" ){
+        System.out.println("no you are not a gay ");
+         
+      }
+      
+    
+   
+   else if (st instanceof String) {
+  System.out.println("Generated string: " + generatedString);
+}
+  
+  else {
+    System.out.println("plese enter a valid name");
+  }
+}
+}
+

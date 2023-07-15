@@ -819,7 +819,7 @@ public class Main {
     }
     
     
-} */
+} *
 import java.io.*;
 import java.util.*;
 
@@ -867,5 +867,330 @@ public class bitmanipulation {
         int n = scn.nextInt();
         System.out.println(NthPalindromicBinary(n));
     }
+  }*/
 
+/**
+ * bitmanipulation
+ */
+
+
+/**
+ * bitmanipulation
+ *
+public class bitmanipulation {
+static ArrayList<Integer> FindUnion(int arr1[], int arr2[], int n, int m) {
+  HashSet <Integer> s=new HashSet<>();
+  ArrayList < Integer > Union=new ArrayList<>();
+  for (int i = 0; i < n; i++)
+    s.add(arr1[i]);
+  for (int i = 0; i < m; i++)
+    s.add(arr2[i]);
+  for (int it: s)
+    Union.add(it);
+  return Union;
+}
+public static void main(String args[]) {
+  int n = 10, m = 7;
+  int arr1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  int arr2[] = {2, 3, 4, 4, 5, 11, 12};
+  ArrayList<Integer> Union = FindUnion(arr1, arr2, n, m);
+  System.out.println("Union of arr1 and arr2 is ");
+  for (int val: Union)
+    System.out.print(val+" ");
+}
+}
+*/
+/**
+ * bitmanipulation
+ *
+import java.util.*;
+
+ public class bitmanipulation {
+
+  public TreeNode delTreeNode(TreeNode root , int key){
+    if( root == null){
+       return null;
+    }
+     if( root.val == key){
+      return helper(root);
+     }
+    TreeNode dummy = root;
+    while ( root!= null ){
+      if ( root.val > key){
+      if ( root.left != null && root.left.val == key ){
+        root.left = helper( root.left);
+        break ;
+      }   
+      else { 
+        root = root.left ;
+      }
+      }
+      else {
+        if ( root.right != null && root.right.val == key ){
+          root.right = helper( root.right);
+          break;
+        }
+        else {
+          root = root.right;
+        }
+      }
+    }
+     return dummy ;
+  }
+    public TreeNode helper ( TreeNode root){
+      if ( root.left == null){
+        return root.right;
+      }
+      else if ( root.right == null){
+        return root.left;
+      }
+      else {
+        TreeNode rightchild = root.right ;
+        TreeNode lastchild = findlastright( root.left);
+        lastchild.right = rightchild ;
+        return root.left ; 
+      }
+    }
+   public TreeNode findlastright( TreeNode root){
+    if( root.right == null){
+      return root ;
+    }
+    return findlastright(root.right);
+  }
+}*/
+
+/**
+ * bitmanipulation
+ */
+import java.util.*;
+
+import javax.swing.tree.TreeNode;
+
+/**
+ * bitmanipulation
+ *import java.util.*;
+
+class TreeNode {
+    int val;
+    TreeNode left, right;
+
+    TreeNode(int val) {
+        this.val = val;
+        left = null;
+        right = null;
+    }
+}
+
+class BitManipulation {
+    public TreeNode bstform(int[] a) {
+        return bstfromint(a, Integer.MAX_VALUE, new int[] { 0 });
+    }
+
+    static TreeNode bstfromint(int[] a, int bound, int[] i) {
+        if (i[0] == a.length || a[i[0]] > bound)
+            return null;
+        TreeNode root = new TreeNode(a[i[0]++]);
+        root.left = bstfromint(a, root.val - 1, i);
+        root.right = bstfromint(a, bound, i);
+        return root;
+    }
+
+    public static void main(String args[]) {
+        int a[] = { 8, 5, 4, 10, 9, 11 };
+        BitManipulation bm = new BitManipulation();
+        TreeNode ans = bm.bstform(a);
+        System.out.println(ans);
+    }
+}
+*/
+
+
+/* *
+public class bitManipulation {
+    static TreeNode inordersuccsor(TreeNode root, TreeNode p) {
+    int smaller = Integer.MIN_VALUE;
+    while (root != null) {
+        if (root.val < value) {
+          if ( root.val > smaller){
+            smaller = root.val;
+          } 
+            root = root.right;
+        } else {
+            root = root.left;
+        }
+    }
+    return smaller;
+} 
+
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(8);
+        root.left = new TreeNode(6);
+        root.left.left = new TreeNode(5);
+        root.left.right = new TreeNode(7);
+        root.right = new TreeNode(10);
+        root.right.left = new TreeNode(9);
+        root.right.right = new TreeNode(11);
+        root.right.right.right= new TreeNode(20);
+
+        TreeNode ans = inordersuccsor(root, new TreeNode(10));
+        System.out.println(ans.val);
+    }
+}
+*/
+/**
+ * bitmanipulation
+ */
+
+
+ import java.util. *;
+ class TreeNode {
+    int val;
+    TreeNode left, right;
+
+    TreeNode(int val) {
+        this.val = val;
+        left = null;
+        right = null;
+    }
+}
+
+/* *
+public class BinaryTreeIterator {
+    private Stack<TreeNode> stack;
+
+    public BinaryTreeIterator(TreeNode root) {
+        stack = new Stack<>();
+        pushAllLeft(root);
+    }
+
+    public boolean hasNext() {
+        return !stack.isEmpty();
+    }
+
+    public int next() {
+        TreeNode node = stack.pop();
+        pushAllLeft(node.right);
+        return node.val;
+    }
+
+    private void pushAllLeft(TreeNode node) {
+        while (node != null) {
+            stack.push(node);
+            node = node.left;
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create a binary tree
+        TreeNode root = new TreeNode(4);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(6);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(3);
+        root.right.left = new TreeNode(5);
+        root.right.right = new TreeNode(7);
+
+        // Create an instance of the BinaryTreeIterator class
+        BinaryTreeIterator iterator = new BinaryTreeIterator(root);
+
+        // Iterate through the binary tree using the iterator
+        while (iterator.hasNext()) {
+            int value = iterator.next();
+            System.out.print(value + " ");
+        }
+    }
+}
+ *
+public class BSTIterator {
+    private Stack<TreeNode> stack = new Stack<TreeNode>();
+    boolean reverse = true; 
+    
+    public BSTIterator(TreeNode root, boolean isReverse) {
+        reverse = isReverse; 
+        pushAll(root);
+    }
+
+    ** @return whether we have a next smallest number *
+    public boolean hasNext() {
+        return !stack.isEmpty();
+    }
+
+    /** @return the next smallest number *
+    public int next() {
+        TreeNode tmpNode = stack.pop();
+        if(reverse == false) pushAll(tmpNode.right);
+        else pushAll(tmpNode.left); 
+        return tmpNode.val;
+    }
+    
+    private void pushAll(TreeNode node) {
+        while(node != null) {
+             stack.push(node);
+             if(reverse == true) {
+                 node = node.right; 
+             } else {
+                 node = node.left; 
+             }
+        }
+    }
+}
+class Solution {
+    public boolean findTarget(TreeNode root, int k) {
+        if(root == null) return false; 
+        BSTIterator l = new BSTIterator(root, false); 
+        BSTIterator r = new BSTIterator(root, true); 
+        
+        int i = l.next(); 
+        int j = r.next(); 
+        while(i<j) {
+            if(i + j == k) return true; 
+            else if(i + j < k) i = l.next(); 
+            else j = r.next(); 
+        }
+        return false; 
+    }
+} */
+/**
+ * bitmanipulation
+ */
+public class bitmanipulation {
+
+   private TreeNode first;
+   private TreeNode prev;
+   private TreeNode  middle;
+   private TreeNode last;
+   
+   private void inorder ( TreeNode root){
+   if ( root == null) return ;
+
+   inorder(root.left);
+   if ( prev !=  null && ( root.val < prev.val)){
+    if (first == null){
+      first = prev ;
+      middle = root;
+    }
+    else 
+    last = root;
+   }
+     prev = root ;
+     inorder(root.right);
+   }
+   
+  public void recoverTree( TreeNode root){
+    first = middle = last = null ;
+    prev = new TreeNode(Integer.MIN_VALUE);
+     inorder(root);
+     if ( first != null && last != null){
+      int t = first.val;
+      first.val = last.val;
+      last.val = t;
+     }
+     else if ( first != null && middle != null ){
+      int t = first.val;
+      first.val = middle.val;
+      middle.val = t ; 
+     
+    }
+  } 
 }
